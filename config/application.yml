@@ -1,0 +1,44 @@
+someco:
+  activemq:
+    root-folder: file:.
+    xml: ${someco.activemq.root-folder}/config/activemq.xml
+server:
+  port: 7070
+spring:
+  # ActiveMQ Configuration
+  activemq:
+      broker-url: failover:tcp://localhost:61616
+      in-memory: true
+      non-blocking-redelivery: true
+      conf: file:config
+      packages:
+        trust-all: true
+        trusted: com.someco
+      pool:
+        block-if-full: true
+        block-if-full-timeout: -1
+        create-connection-on-startup: true
+        enabled: true
+        expiry-timeout: 0
+        idle-timeout: 30000
+        max-connections: 5
+        maximum-active-session-per-connection: 500
+        reconnect-on-exception: true
+        time-between-expiration-check: -1
+        use-anonymous-producers: true
+
+  # Spring JMS Settings
+  jms:
+    listener:
+      acknowledge-mode: auto
+      auto-startup: true
+      concurrency: 5
+      max-concurrency: 10
+    pub-sub-domain: false
+    template:
+      default-destination:
+      delivery-mode: non_persistent
+      priority: 100
+      qos-enabled: true
+      receive-timeout: 1000
+      time-to-live: 36000
