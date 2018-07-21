@@ -48,7 +48,7 @@
         </destinationPolicy>
 
         <managementContext>
-            <managementContext connectorPort="1099" jmxDomainName="localhost" createConnector="true"/>
+            <managementContext connectorPort="1099" jmxDomainName="org.apache.activemq" createConnector="true"/>
         </managementContext>
 
         <persistenceAdapter>
